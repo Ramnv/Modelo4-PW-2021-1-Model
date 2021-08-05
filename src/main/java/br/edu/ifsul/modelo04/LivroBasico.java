@@ -3,6 +3,7 @@ terminar autores
  */
 package br.edu.ifsul.modelo04;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Objects;
@@ -27,23 +28,23 @@ import org.hibernate.validator.constraints.Length;
  */
 @Entity
 @Table(name = "livrobasico")
-public class LivroBasico {
+public class LivroBasico implements Serializable {
 
     @Id
     @NotBlank(message = "O isbn de livro deve ser informado")
-    @Length(max = 30, message = "O isbn de livro não pode ter mais que {max} caracteres")
+    @Length(max = 13, message = "O isbn de livro não pode ter mais que {max} caracteres")
     @Column(name = "isbn", length = 30, nullable = false)
-    private String ISBN;
+    private String ISBN; // Exemplo: 978-3-16-148410-0
     @NotBlank(message = "O titulo deve ser informado")
     @Length(max = 30, message = "O titulo não pode ter mais que {max} caracteres")
     @Column(name = "titulo", length = 30, nullable = false)
     private String titulo;
     @NotBlank(message = "O resumo deve ser informado")
-    @Length(max = 30, message = "O nome não pode ter mais que {max} caracteres")
+    @Length(max = 30, message = "O resumo não pode ter mais que {max} caracteres")
     @Column(name = "resumo", length = 30, nullable = false)
     private String resumo;
     @NotBlank(message = "O editora deve ser informado")
-    @Length(max = 30, message = "O nome não pode ter mais que {max} caracteres")
+    @Length(max = 30, message = "O editora não pode ter mais que {max} caracteres")
     @Column(name = "editora", length = 30, nullable = false)
     private String editora;
     @Temporal(TemporalType.DATE)
@@ -51,13 +52,18 @@ public class LivroBasico {
     @Column(name = "data_publicacao", nullable = false)
     private Calendar dataPublicacao;
 
+    // !
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "autores",
             joinColumns
-            = @JoinColumn(name = "nome_usuario", referencedColumnName = "nome_usuario", nullable = false),
+            = @JoinColumn(name = "isbn", referencedColumnName = "isbn", nullable = false),
             inverseJoinColumns
             = @JoinColumn(name = "autor", referencedColumnName = "nome", nullable = false))
     private Set<Autor> autores = new HashSet<>();
+
+    public LivroBasico(Calendar dataPublicacao) {
+        this.dataPublicacao = Calendar.getInstance();
+    }
 
     public String getISBN() {
         return ISBN;

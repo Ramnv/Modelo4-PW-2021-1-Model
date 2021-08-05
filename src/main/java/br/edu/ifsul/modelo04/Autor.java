@@ -29,6 +29,9 @@ public class Autor implements Serializable {
     @NotBlank(message = "O bibliografia deve ser informado")
     @Column(name = "bibliografia", nullable = false)
     private String bibliografia;
+
+    public Autor() {
+    }
     
     
 

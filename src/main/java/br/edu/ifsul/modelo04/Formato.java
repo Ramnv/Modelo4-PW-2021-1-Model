@@ -29,14 +29,13 @@ public class Formato implements Serializable {
     @SequenceGenerator(name = "seq_formato", sequenceName = "seq_formato_id", allocationSize = 1)
     @GeneratedValue(generator = "seq_formato", strategy = GenerationType.SEQUENCE)
     private Integer id;
-    @NotBlank(message = "O nome deve ser informado")
-    @Length(max = 50, message = "O nome não pode ter mais que {max} caracteres")
-    @Column(name = "nome", length = 50, nullable = false)
+    @NotBlank(message = "O formato deve ser informado")
+    @Length(max = 50, message = "O fomato não pode ter mais que {max} caracteres")
+    @Column(name = "nome_formato", length = 50, nullable = false)
     private String nome;
 
     public Formato() {
     }
-    
 
     public Integer getId() {
         return id;
@@ -78,6 +77,5 @@ public class Formato implements Serializable {
         }
         return true;
     }
-    
-    
+
 }
