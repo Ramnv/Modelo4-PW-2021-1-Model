@@ -12,6 +12,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -27,13 +29,14 @@ import org.hibernate.validator.constraints.Length;
  * @author rvelasco
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "livrobasico")
 public class LivroBasico implements Serializable {
 
     @Id
     @NotBlank(message = "O isbn de livro deve ser informado")
     @Length(max = 13, message = "O isbn de livro não pode ter mais que {max} caracteres")
-    @Column(name = "isbn", length = 30, nullable = false)
+    @Column(name = "isbn", length = 13, nullable = false)
     private String ISBN; // Exemplo: 978-3-16-148410-0
     @NotBlank(message = "O titulo deve ser informado")
     @Length(max = 30, message = "O titulo não pode ter mais que {max} caracteres")
@@ -58,10 +61,11 @@ public class LivroBasico implements Serializable {
             joinColumns
             = @JoinColumn(name = "isbn", referencedColumnName = "isbn", nullable = false),
             inverseJoinColumns
-            = @JoinColumn(name = "autor", referencedColumnName = "nome", nullable = false))
+            = @JoinColumn(name = "autor", referencedColumnName = "id", nullable = false))
     private Set<Autor> autores = new HashSet<>();
 
     public LivroBasico() {
+        this.dataPublicacao = Calendar.getInstance();
     }
 
     public String getISBN() {
@@ -114,8 +118,8 @@ public class LivroBasico implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 19 * hash + Objects.hashCode(this.titulo);
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.ISBN);
         return hash;
     }
 
@@ -131,7 +135,7 @@ public class LivroBasico implements Serializable {
             return false;
         }
         final LivroBasico other = (LivroBasico) obj;
-        if (!Objects.equals(this.titulo, other.titulo)) {
+        if (!Objects.equals(this.ISBN, other.ISBN)) {
             return false;
         }
         return true;

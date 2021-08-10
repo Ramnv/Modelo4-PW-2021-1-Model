@@ -15,8 +15,8 @@ public class TestePersistirLivraria {
         EntityManager em = emf.createEntityManager();
         
         Livraria i = new Livraria();
-        i.setNome("LivrariaTeste2");
-        i.setSite("Livraria2.teste.com");
+        i.setNome("LivrariaTeste");
+        i.setSite("Livraria.teste.com");
         
         
         em.getTransaction().begin();

@@ -36,15 +36,15 @@ public class Catalogo implements Serializable {
     @Id
     @SequenceGenerator(name = "seq_catalogo", sequenceName = "seq_catalogo_id", allocationSize = 1)
     @GeneratedValue(generator = "seq_catalogo", strategy = GenerationType.SEQUENCE)
-    Integer id;
+    private Integer id;
     @NotBlank(message = "O nome deve ser informado")
     @Length(max = 30, message = "O nome não pode ter mais que {max} caracteres")
     @Column(name = "nome", length = 30, nullable = false)
-    String nome;
+    private String nome;
     @NotBlank(message = "O descricao deve ser informado")
     @Length(max = 30, message = "O descricao não pode ter mais que {max} caracteres")
     @Column(name = "descricao", length = 30, nullable = false)
-    String descricao;
+    private String descricao;
     @NotNull(message = "O livraria deve ser informada")
     @ManyToOne
     @JoinColumn(name = "livraria_id", referencedColumnName = "id", nullable = false)
@@ -104,4 +104,30 @@ public class Catalogo implements Serializable {
     public void setLivros(List<Livro> livros) {
         this.livros = livros;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Catalogo other = (Catalogo) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -16,7 +16,7 @@ public class TestePersistirCatalogo {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PW-2021-1-ModelPU");
         EntityManager em = emf.createEntityManager();
 
-        Livraria l = em.find(Livraria.class, 2);
+        Livraria l = em.find(Livraria.class, 3);
         Catalogo i = new Catalogo();
 
         i.setNome("CatalagoTeste");

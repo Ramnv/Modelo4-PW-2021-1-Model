@@ -57,6 +57,7 @@ public class Livro extends LivroBasico {
     private Catalogo catalogo;
 
     public Livro() {
+        this.dataCadastro = Calendar.getInstance();
     }
 
     public String getCodigoBarras() {
