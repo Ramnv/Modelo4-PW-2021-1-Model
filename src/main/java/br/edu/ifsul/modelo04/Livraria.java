@@ -50,7 +50,8 @@ public class Livraria implements Serializable {
     }
 
     public void adicionarCatalogo(Catalogo obj) {
-        //obj.setTime(this);
+        //
+        obj.setLivraria(this);
         this.catalogos.add(obj);
     }
 
