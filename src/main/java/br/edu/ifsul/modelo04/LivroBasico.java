@@ -61,8 +61,7 @@ public class LivroBasico implements Serializable {
             = @JoinColumn(name = "autor", referencedColumnName = "nome", nullable = false))
     private Set<Autor> autores = new HashSet<>();
 
-    public LivroBasico(Calendar dataPublicacao) {
-        this.dataPublicacao = Calendar.getInstance();
+    public LivroBasico() {
     }
 
     public String getISBN() {

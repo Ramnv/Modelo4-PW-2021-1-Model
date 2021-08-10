@@ -1,13 +1,13 @@
-/*
-ok, 
- */
 package br.edu.ifsul.modelo04;
 
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
@@ -21,6 +21,8 @@ import org.hibernate.validator.constraints.Length;
 public class Autor implements Serializable {
 
     @Id
+    @SequenceGenerator(name = "seq_id", sequenceName = "seq_autor_id", allocationSize = 1)
+    @GeneratedValue(generator = "seq_id", strategy = GenerationType.SEQUENCE)
     private Integer id;
     @NotBlank(message = "O nome deve ser informado")
     @Length(max = 30, message = "O nome não pode ter mais que {max} caracteres")

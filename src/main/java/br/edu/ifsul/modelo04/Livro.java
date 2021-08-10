@@ -36,9 +36,9 @@ public class Livro extends LivroBasico {
     @NotNull(message = "O campo ativo deve ser informado")
     @Column(name = "ativo", nullable = false)
     Boolean ativo;
-    @NotNull(message = "A data de cadastro deve ser informada")
     @Temporal(TemporalType.DATE)
-    @Column(name = "data_cadastro", nullable = false)// para guardar somente a hora use, columnDefinition = "time")
+    @NotNull(message = "A data de cadastro deve ser informada")
+    @Column(name = "data_cadastro", nullable = false)
     Calendar dataCadastro;
     @NotNull(message = "O valor deve ser informado")
     @Column(name = "valor", nullable = false, columnDefinition = "numeric(6,3)")
@@ -56,9 +56,7 @@ public class Livro extends LivroBasico {
     @JoinColumn(name = "catalogo_id", referencedColumnName = "id", nullable = false)
     private Catalogo catalogo;
 
-    public Livro(Calendar dataPublicacao) {
-        super(dataPublicacao);
-        this.dataCadastro = Calendar.getInstance();
+    public Livro() {
     }
 
     public String getCodigoBarras() {
