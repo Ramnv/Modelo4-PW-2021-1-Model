@@ -28,7 +28,7 @@ import javax.validation.constraints.NotNull;
 public class Livro extends LivroBasico {
 
     @NotNull(message = "O codigo de barras deve ser informado")
-    @Column(name = "codigo_barras", nullable = false, columnDefinition = "numeric(6)")
+    @Column(name = "codigo_barras", nullable = false, length = 12)
     String codigoBarras;
     @NotNull(message = "O numero de paginas deve ser informado")
     @Column(name = "numero_paginas", nullable = false, columnDefinition = "numeric(6)")

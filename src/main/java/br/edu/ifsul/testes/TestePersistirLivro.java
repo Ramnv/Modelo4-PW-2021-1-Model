@@ -20,26 +20,28 @@ public class TestePersistirLivro {
         EntityManager em = emf.createEntityManager();
 
 //        LivroBasico livb = em.find(LivroBasico.class, "1234567891235");
-//        Catalogo cat = new Catalogo();
         Livro liv = new Livro();
 
+        Catalogo cat = em.find(Catalogo.class, 7);
         liv.setFormato(em.find(Formato.class, 6));
         liv.setIdioma(em.find(Idioma.class, 5));
 
-        liv.setISBN("ISBN567891235");
-        liv.setTitulo("TituloTeste");
-        liv.setResumo("ResumoTeste");
-        liv.setEditora("EditoraTeste");
+        liv.setISBN("2ISBN56789123");
+        liv.setTitulo("TituloTeste2");
+        liv.setResumo("ResumoTeste2");
+        liv.setEditora("EditoraTeste2");
         // dataPublicacao
 
-        liv.setCodigoBarras("123456");
-        liv.setNumeroPaginas(900);
+        liv.setCodigoBarras("223456789012"); // 12
+        liv.setNumeroPaginas(200);
         liv.setAtivo(true);
-        liv.setValor(200.50);
+        liv.setValor(223.50);
 //        liv.setDataCadastro(Calendar.getInstance());
 
+        cat.adicionarLivro(liv);
+
         em.getTransaction().begin();
-        em.persist(liv);
+        em.merge(cat);
         em.getTransaction().commit();
         em.close();
         emf.close();
