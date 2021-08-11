@@ -26,16 +26,16 @@ public class TestePersistirLivro {
         liv.setFormato(em.find(Formato.class, 6));
         liv.setIdioma(em.find(Idioma.class, 5));
 
-        liv.setISBN("2ISBN56789123");
+        liv.setISBN("3ISBN56789123");
         liv.setTitulo("TituloTeste2");
         liv.setResumo("ResumoTeste2");
         liv.setEditora("EditoraTeste2");
         // dataPublicacao
 
         liv.setCodigoBarras("223456789012"); // 12
-        liv.setNumeroPaginas(200);
+        liv.setNumeroPaginas(100);
         liv.setAtivo(true);
-        liv.setValor(223.50);
+        liv.setValor(323.50);
 //        liv.setDataCadastro(Calendar.getInstance());
 
         cat.adicionarLivro(liv);

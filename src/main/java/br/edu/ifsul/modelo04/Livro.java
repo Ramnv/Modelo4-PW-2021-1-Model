@@ -29,20 +29,20 @@ public class Livro extends LivroBasico {
 
     @NotNull(message = "O codigo de barras deve ser informado")
     @Column(name = "codigo_barras", nullable = false, length = 12)
-    String codigoBarras;
+    private String codigoBarras;
     @NotNull(message = "O numero de paginas deve ser informado")
     @Column(name = "numero_paginas", nullable = false, columnDefinition = "numeric(6)")
-    Integer numeroPaginas;
+    private Integer numeroPaginas;
     @NotNull(message = "O campo ativo deve ser informado")
     @Column(name = "ativo", nullable = false)
-    Boolean ativo;
+    private Boolean ativo;
     @Temporal(TemporalType.DATE)
     @NotNull(message = "A data de cadastro deve ser informada")
     @Column(name = "data_cadastro", nullable = false)
-    Calendar dataCadastro;
+    private Calendar dataCadastro;
     @NotNull(message = "O valor deve ser informado")
     @Column(name = "valor", nullable = false, columnDefinition = "numeric(6,3)")
-    Double valor;
+    private Double valor;
     @NotNull(message = "O usuário deve ser informado")
     @ManyToOne
     @JoinColumn(name = "idioma", referencedColumnName = "nome_idioma", nullable = false)
