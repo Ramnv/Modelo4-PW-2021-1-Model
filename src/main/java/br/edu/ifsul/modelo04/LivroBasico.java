@@ -1,6 +1,3 @@
-/*
-terminar autores
- */
 package br.edu.ifsul.modelo04;
 
 import java.io.Serializable;
