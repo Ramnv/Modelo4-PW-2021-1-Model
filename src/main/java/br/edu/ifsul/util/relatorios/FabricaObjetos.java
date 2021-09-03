@@ -25,14 +25,22 @@ public class FabricaObjetos {
         t.setNome("Português");
         t.setSigla("PT");
         lista.add(t);
+        t.setId(2);
+        t.setNome("Inglês");
+        t.setSigla("EN");
+        lista.add(t);
+        t.setId(3);
+        t.setNome("Espanhol");
+        t.setSigla("ES");
+        lista.add(t);
         return lista;
     }
     
-    public static List<Livro> carregaLivros() {
-        List<Livro> lista = new ArrayList<>();
-        Livro l = new Livro();
-
-        lista.add(l);
-        return lista;
-    }
+//    public static List<Livro> carregaLivros() {
+//        List<Livro> lista = new ArrayList<>();
+//        Livro l = new Livro();
+//
+//        lista.add(l);
+//        return lista;
+//    }
 }
