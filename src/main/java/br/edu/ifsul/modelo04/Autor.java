@@ -35,8 +35,6 @@ public class Autor implements Serializable {
 
     public Autor() {
     }
-    
-    
 
     public Integer getId() {
         return id;
