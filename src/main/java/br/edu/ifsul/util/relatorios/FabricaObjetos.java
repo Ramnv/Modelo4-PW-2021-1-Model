@@ -8,17 +8,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author rvelasco
  */
 public class FabricaObjetos {
 
+    // livraria
+    // catalogos
+    
     public static List<Idioma> carregaIdiomas() {
         List<Idioma> lista = new ArrayList<>();
         Idioma t = new Idioma();

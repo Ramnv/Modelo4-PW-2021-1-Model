@@ -14,7 +14,7 @@ public class TestePersistirPermissoes {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PW-2021-1-ModelPU");
         EntityManager em = emf.createEntityManager();
-        Usuario u = em.find(Usuario.class, "user");
+        Usuario u = em.find(Usuario.class, "ramonvelasco");
         Permissao p1 = em.find(Permissao.class, "ADMINISTRADOR");
         Permissao p2 = em.find(Permissao.class, "USUARIO");
         u.getPermissoes().add(p1);

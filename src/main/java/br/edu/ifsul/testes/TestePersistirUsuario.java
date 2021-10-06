@@ -15,7 +15,7 @@ public class TestePersistirUsuario {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PW-2021-1-ModelPU");
         EntityManager em = emf.createEntityManager();
         Usuario u = new Usuario();
-        u.setNomeUsuario("user");
+        u.setNomeUsuario("ramonvelasco");
         u.setSenha("123456");
         u.setAtivo(true);
         u.setEmail("ramon.velasco@ifsul.edu.br");        
