@@ -1,13 +1,18 @@
 package br.edu.ifsul.modelo04;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -51,9 +56,15 @@ public class Livro extends LivroBasico {
     @JoinColumn(name = "catalogo_id", referencedColumnName = "id", nullable = false)
     private Catalogo catalogo;
 
+    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Autor> autores = new ArrayList<>();
+
     public Livro() {
         this.dataCadastro = Calendar.getInstance();
     }
+    
+  
 
     public String getCodigoBarras() {
         return codigoBarras;
@@ -117,6 +128,14 @@ public class Livro extends LivroBasico {
 
     public void setCatalogo(Catalogo catalogo) {
         this.catalogo = catalogo;
+    }
+
+    public List<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(List<Autor> autores) {
+        this.autores = autores;
     }
 
 }

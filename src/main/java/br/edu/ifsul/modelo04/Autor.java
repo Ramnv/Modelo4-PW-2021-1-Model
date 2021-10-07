@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -30,10 +32,20 @@ public class Autor implements Serializable {
     private String nome;
     @NotBlank(message = "O bibliografia deve ser informado")
     @Column(name = "bibliografia", nullable = false)
-    // text
     private String bibliografia;
+    @ManyToOne
+    @JoinColumn(name = "ISBN", referencedColumnName = "id", nullable = false)
+    private Livro livro;
 
     public Autor() {
+    }
+    
+      public void adicionarAutor(Autor obj){
+        this.autores.add(obj);
+    }
+    
+    public void removerAutor(int index){
+        this.autores.remove(index);
     }
 
     public Integer getId() {
@@ -58,6 +70,14 @@ public class Autor implements Serializable {
 
     public void setBibliografia(String bibliografia) {
         this.bibliografia = bibliografia;
+    }
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
     }
 
     @Override

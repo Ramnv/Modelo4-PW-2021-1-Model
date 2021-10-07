@@ -1,8 +1,10 @@
 package br.edu.ifsul.util.relatorios;
 
 import br.edu.ifsul.modelo04.Autor;
+import br.edu.ifsul.modelo04.Catalogo;
 import br.edu.ifsul.modelo04.Formato;
 import br.edu.ifsul.modelo04.Idioma;
+import br.edu.ifsul.modelo04.Livraria;
 import br.edu.ifsul.modelo04.Livro;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,8 +17,41 @@ import java.util.List;
 public class FabricaObjetos {
 
     // livraria
+    // criar catalogos
+    public static List<Livraria> carregaLivrarias() {
+        List<Livraria> lista = new ArrayList<>();
+
+        Livraria livraria = new Livraria();
+        livraria.setId(1);
+        livraria.setNome("Livraria Saraiva");
+        livraria.setSite("Saraiva.com");
+
+        Catalogo cat = new Catalogo();
+        cat.setId(1);
+        cat.setNome("Cat1");
+        cat.setDescricao("descricaocat1");
+
+        livraria.adicionarCatalogo(cat);
+
+        lista.add(livraria);
+        return lista;
+    }
+
     // catalogos
-    
+    // criar livros
+//    public static List<Catalogo> carregaCatalogos() {
+//        List<Catalogo> lista = new ArrayList<>();
+//        Catalogo form = new Catalogo();
+//
+//        Livro livro = new Livro();
+//livro.set
+//        
+//        form.setId(Integer.SIZE);
+//        form.setNome("EPUB");
+//        form.setDescricao("versão digital");
+//        lista.add(form);
+//        return lista;
+//    }
     public static List<Idioma> carregaIdiomas() {
         List<Idioma> lista = new ArrayList<>();
         Idioma t = new Idioma();
