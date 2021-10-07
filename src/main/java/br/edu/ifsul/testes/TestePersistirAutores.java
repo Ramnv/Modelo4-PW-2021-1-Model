@@ -1,12 +1,12 @@
 package br.edu.ifsul.testes;
 
+import br.edu.ifsul.modelo04.Autor;
 import br.edu.ifsul.modelo04.LivroBasico;
-import java.util.Calendar;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class TestePersistirLivroBasico {
+public class TestePersistirAutores {
 
     /**
      * @param args the command line arguments
@@ -14,21 +14,16 @@ public class TestePersistirLivroBasico {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PW-2021-1-ModelPU");
         EntityManager em = emf.createEntityManager();
-
-        LivroBasico c = new LivroBasico();
-
-        c.setISBN("1234567891235");
-        c.setTitulo("tituloBasico");
-        c.setResumo("ResumoBasico");
-        c.setEditora("EditoraBasico");
-        c.setDataPublicacao(Calendar.getInstance());
-
+        LivroBasico u = em.find(LivroBasico.class, "1234567891235");
+        Autor p1 = em.find(Autor.class, 9);
+//        Autor p2 = em.find(Autor.class, 8);
+        u.getAutores().add(p1);
+//        u.getAutores().add(p2);
         em.getTransaction().begin();
-        em.persist(c);
+        em.merge(u);
         em.getTransaction().commit();
         em.close();
         emf.close();
-
     }
 
 }

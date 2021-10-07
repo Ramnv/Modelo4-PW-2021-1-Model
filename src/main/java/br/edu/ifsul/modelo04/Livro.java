@@ -56,15 +56,9 @@ public class Livro extends LivroBasico {
     @JoinColumn(name = "catalogo_id", referencedColumnName = "id", nullable = false)
     private Catalogo catalogo;
 
-    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL,
-            orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Autor> autores = new ArrayList<>();
-
     public Livro() {
         this.dataCadastro = Calendar.getInstance();
-    }
-    
-  
+    } 
 
     public String getCodigoBarras() {
         return codigoBarras;
@@ -128,14 +122,6 @@ public class Livro extends LivroBasico {
 
     public void setCatalogo(Catalogo catalogo) {
         this.catalogo = catalogo;
-    }
-
-    public List<Autor> getAutores() {
-        return autores;
-    }
-
-    public void setAutores(List<Autor> autores) {
-        this.autores = autores;
     }
 
 }

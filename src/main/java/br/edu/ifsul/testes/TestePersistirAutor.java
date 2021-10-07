@@ -16,8 +16,8 @@ public class TestePersistirAutor {
         EntityManager em = emf.createEntityManager();
         Autor i = new Autor();
 
-        i.setNome("AutorTeste");
-        i.setBibliografia("BLABLABLABLBAABLA");
+        i.setNome("AutorTeste1");
+        i.setBibliografia("biblio1");
         em.getTransaction().begin();
         em.persist(i);
         em.getTransaction().commit();
